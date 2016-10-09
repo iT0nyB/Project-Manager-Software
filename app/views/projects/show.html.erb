@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Promgrid:</strong>
+  <%= @project.proMgrId %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @project.budget %>
+</p>
+
+<p>
+  <strong>Ongoingcost:</strong>
+  <%= @project.ongoingcost %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @project.location %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

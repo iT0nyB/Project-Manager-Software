@@ -1,0 +1,15 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :proMgrId %>
+    <%= f.input :budget %>
+    <%= f.input :ongoingcost %>
+    <%= f.input :location %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
