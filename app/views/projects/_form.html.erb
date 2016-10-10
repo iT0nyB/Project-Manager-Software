@@ -1,15 +1,16 @@
-<%= simple_form_for(@project) do |f| %>
+<%= simple_form_for(@project, html: {class: "form-signin"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :proMgrId %>
-    <%= f.input :budget %>
-    <%= f.input :ongoingcost %>
-    <%= f.input :location %>
+    <%= f.input :title, label:false, placeholder: "Title" %>
+    <%= f.input :proMgrId, label:false, placeholder: "Project Manager's Id" %>
+    <%= f.input :budget, label:false, placeholder: "Budget" %>
+    <%= f.input :ongoingcost, label:false, placeholder: "Ongoing Cost"%>
+    <%= f.input :location, label:false, placeholder: "Location"%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary btn-block' %>
   </div>
+  
 <% end %>
