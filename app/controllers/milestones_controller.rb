@@ -1,4 +1,5 @@
 class MilestonesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_milestone, only: [:show, :edit, :update, :destroy]
 
   # GET /milestones
@@ -24,7 +25,8 @@ class MilestonesController < ApplicationController
   # POST /milestones
   # POST /milestones.json
   def create
-    @milestone = Milestone.new(milestone_params)
+    @project = Project.find(params[:id])
+    @milestone = @project.milestones.create(milestone_params)
 
     respond_to do |format|
       if @milestone.save
