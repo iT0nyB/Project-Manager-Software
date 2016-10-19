@@ -1,29 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Project Manager's Id:</strong>
-  <%= @project.proMgrId %>
-</p>
-
-<p>
-  <strong>Budget:</strong>
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
+<tr><td><strong>Title:</strong></td><td><%= @project.title %></td></tr>
+<tr><td><strong>Budget:</strong></td><td>
   <%= @project.budget %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Ongoing Cost:</strong>
+<tr><td><strong>Ongoing Cost:</strong></td><td>
   <%= @project.ongoingcost %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @project.location %>
-</p>
-
+</td></tr>
+</table>
+</div>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

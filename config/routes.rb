@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :milestones
+
   resources :projects
 
   devise_for :users
@@ -10,8 +12,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    
     root 'pages#home' #makes the home page the root page
-    
-    get 'projects' => 'pages#projects'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

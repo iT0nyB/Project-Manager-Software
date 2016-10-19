@@ -4,14 +4,12 @@
 
 <div class="table-responsive">
 <table class="table table-bordered table-hover">
-  <thead>
+  <thead class="thead-inverse">
     <tr>
       <th>Title</th>
-      <th>Project Manager's Id</th>
       <th>Budget</th>
       <th>Ongoing Cost</th>
-      <th>Location</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -19,10 +17,8 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.title %></td>
-        <td><%= project.proMgrId %></td>
         <td><%= project.budget %></td>
         <td><%= project.ongoingcost %></td>
-        <td><%= project.location %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
