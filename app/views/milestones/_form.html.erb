@@ -1,11 +1,13 @@
-<%= simple_form_for(@milestone) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(@milestone, html: {class: "form-signin"}) do |f| %>
+  <p id="notice"><%= f.error_notification %></p>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :startDate %>
-    <%= f.input :completionDate %>
-    <%= f.input :state %>
+    <%= f.input :name, label: false, placeholder: "Name" %>
+    <%= f.input :startDate, label: false, placeholder: "Start Date", input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+
+    <%= f.input :completionDate, label: false, placeholder: "Completion Date",input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+    <%= f.input :state, label: false, placeholder: "State" %>
+    <%= f.hidden_field :project_id, :value => @project.id%>
   </div>
 
   <div class="form-actions">

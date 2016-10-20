@@ -11,23 +11,28 @@ class MilestonesController < ApplicationController
   # GET /milestones/1
   # GET /milestones/1.json
   def show
+      session[:return_to] ||= request.referer
   end
 
   # GET /milestones/new
   def new
-    @milestone = Milestone.new
+    #@milestone = Milestone.new
+    @milestone = Milestone.new(:project_id => params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   # GET /milestones/1/edit
   def edit
+      session[:return_to] ||= request.referer
   end
 
   # POST /milestones
   # POST /milestones.json
   def create
-    @project = Project.find(params[:id])
-    @milestone = @project.milestones.create(milestone_params)
+    #@project = Project.find(params[:id])
+    #@milestone = @project.milestones.create(milestone_params)
 
+     @milestone = Milestone.new(milestone_params)
     respond_to do |format|
       if @milestone.save
         format.html { redirect_to @milestone, notice: 'Milestone was successfully created.' }
@@ -71,6 +76,6 @@ class MilestonesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def milestone_params
-      params.require(:milestone).permit(:name, :startDate, :completionDate, :state)
+      params.require(:milestone).permit(:name, :startDate, :completionDate, :state, :project_id)
     end
 end
