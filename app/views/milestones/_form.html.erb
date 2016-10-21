@@ -7,7 +7,6 @@
 
     <%= f.input :completionDate, label: false, placeholder: "Completion Date",input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
     <%= f.input :state, label: false, placeholder: "State" %>
-    <%= f.hidden_field :project_id, :value => @project.id%>
   </div>
 
   <div class="form-actions">

@@ -5,7 +5,9 @@ class MilestonesController < ApplicationController
   # GET /milestones
   # GET /milestones.json
   def index
-    @milestones = Milestone.all
+    @notStarted = Milestone.where(state: "to_do")
+    @inProgress = Milestone.where(state: "doing")
+    @completed = Milestone.where(state: "completed")
   end
 
   # GET /milestones/1
@@ -16,9 +18,9 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/new
   def new
-    #@milestone = Milestone.new
-    @milestone = Milestone.new(:project_id => params[:project_id])
-    @project = Project.find(params[:project_id])
+    @milestone = Milestone.new
+    #@milestone = Milestone.new(:project_id => params[:project_id])
+    #@project = Project.find(params[:project_id])
   end
 
   # GET /milestones/1/edit

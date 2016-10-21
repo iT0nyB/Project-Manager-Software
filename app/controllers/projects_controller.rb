@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+      @notStarted = Milestone.where(state: "to_do")
      #@projects = current_user.projects
   end
 

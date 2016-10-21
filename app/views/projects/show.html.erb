@@ -13,12 +13,44 @@
 </table>
 </div>
 
-<h2>Milestones</h2>
-<div id="Milestones">
-    <%= render :partial => @project.milestones %>
+<h4>Milestones</h4>
+<div class="row">
+<div id="notStarted" class="col-md-4">
+   <h5>Not Started</h5>
+    <%= render :partial => @project.milestones.where(state: "to_do") %>
 </div>
+<div id="inProgress" class="col-md-4">
+   <h5>In Progress</h5>
+    <%= render :partial => @project.milestones.where(state: "doing")%>
+</div>
+<div id="completed" class="col-md-4">
+   <h5>Completed</h5>
+    <%= render :partial => @project.milestones.where(state: "completed") %>
+</div>
+</div>
+<br/>
 
-<%= link_to 'New Milestone', new_milestone_path(:project_id => @project) %>
+   <%= simple_form_for([@milestone, Milestone.new], html:{class: "form-horzontal"}, remote:true) do |f|   %>
+    <div class="row">
+    <div class="col-md-2">
+    <%= f.input :name, label: false, placeholder: "Name" %>
+        </div>
+         <div class="col-md-3">
+    <%= f.input :startDate, label: false, placeholder: "Start Date", input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+ </div>
+   <div class="col-md-3">
+    <%= f.input :completionDate, label: false, placeholder: "Completion Date",input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+        </div>
+    <div class="col-md-2">
+     <%= f.input :state, label: false, placeholder: "State" %></div>
+    <%= f.hidden_field :project_id, :value => @project.id%>
+    <div class="col-md-2">
+    <p><%= f.submit "Add Milestone"%></p></div>
+
+</div>
+<% end -%>
+
+
 
 <br/>
 <%= link_to 'Edit', edit_project_path(@project) %> |
