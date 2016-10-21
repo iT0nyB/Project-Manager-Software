@@ -5,6 +5,11 @@
         <%= link_to 'Show', milestone %>
         <%= link_to 'Edit', edit_milestone_path(milestone) %>
         <%= link_to 'Destroy', milestone, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if milestone.state == "to_do" || milestone.state == "completed" %>
+        <%= link_to "Mark as Doing", change_milestone_path(milestone, state: "doing"), method::put %>
+        <%else%>
+        <%= link_to "Mark as To Do", change_milestone_path(milestone, state: "to_do"), method::put %>
+        <% end%>
 <% end -%>
 
 

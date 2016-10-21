@@ -1,6 +1,6 @@
 class MilestonesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_milestone, only: [:show, :edit, :update, :destroy]
+  before_action :set_milestone, only: [:show, :edit, :update, :destroy, :change]
 
   # GET /milestones
   # GET /milestones.json
@@ -58,6 +58,13 @@ class MilestonesController < ApplicationController
         format.json { render json: @milestone.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def change
+    @milestone.update_attributes(state: params[:state])
+    respond_to do |format|
+    format.html {redirect_to project_path(@milestone.project_id), notice: "Task Update"}
+  end
   end
 
   # DELETE /milestones/1

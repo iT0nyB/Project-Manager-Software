@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  
 
-  resources :milestones
+
+  resources :milestones do
+    member do
+      put :change
+    end
+  end
 
   resources :projects
 
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   
+
     root 'pages#home' #makes the home page the root page
 
   # Example of regular route:
